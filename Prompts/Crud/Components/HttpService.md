@@ -1,6 +1,6 @@
-﻿# Workforce — Availability — Serviço HTTP (Blazor Client)
+﻿# Workforce — Serviço HTTP (Blazor Client)
 
-Este documento define as regras para a **camada de serviço HTTP no client** (Blazor WebAssembly) da entidade `<Entity>` (Availability):
+Este documento define as regras para a **camada de serviço HTTP no client** (Blazor WebAssembly) da entidade `<Entity>`:
 
 * Interface `I<Entity>Service`.
 * Implementação `<Entity>Service`.
@@ -9,7 +9,7 @@ Este documento define as regras para a **camada de serviço HTTP no client** (Bl
 Respeite:
 
 * Persona, variáveis e regras gerais do documento principal  
-  `docs/Workforce.Availability.CRUD.Main.md`.
+      `Workforce.Specs/Prompts/Crud/CrudWithFrontend.md`
 * Formato de saída em **Saída Esperada (formato)**.
 
 ---

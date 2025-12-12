@@ -1,4 +1,4 @@
-﻿# Workforce — Availability — Business (Repository & DB)
+﻿# Workforce — Business (Repository & DB)
 
 Este documento define as regras específicas para a **camada de Business** da entidade `<Entity>` (Availability):
 
@@ -9,7 +9,7 @@ Este documento define as regras específicas para a **camada de Business** da en
 Respeite sempre:
 
 * A persona, variáveis e regras gerais definidas em  
-  `docs/Workforce.Availability.CRUD.Main.md`.
+    `Workforce.Specs/Prompts/Crud/CrudWithFrontend.md`
 * O formato de saída descrito em **Saída Esperada (formato)** do documento principal.
 
 ---

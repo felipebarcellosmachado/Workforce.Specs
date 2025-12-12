@@ -1,6 +1,6 @@
-﻿# Workforce — Availability — API (Controller & Server Registration)
+﻿# Workforce — API (Controller & Server Registration)
 
-Este documento define as regras para a **camada de API** da entidade `<Entity>` (Availability):
+Este documento define as regras para a **camada de API** da entidade `<Entity>`:
 
 * Controller Web API para `<Entity>`.
 * Rotas, códigos de status e convenções.
@@ -9,7 +9,7 @@ Este documento define as regras para a **camada de API** da entidade `<Entity>` 
 Respeite sempre:
 
 * Persona, variáveis e regras gerais do documento principal  
-  `docs/Workforce.Availability.CRUD.Main.md`.
+      `Workforce.Specs/Prompts/Crud/CrudWithFrontend.md`
 * Formato de saída em **Saída Esperada (formato)** do documento principal.
 
 ---

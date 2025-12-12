@@ -1,6 +1,6 @@
-# Workforce — Availability — Frontend (Blazor + Radzen + Layout)
+# Workforce — Frontend (Blazor + Radzen + Layout)
 
-Este documento define as regras para a **camada de Frontend** da entidade `<Entity>` (Availability):
+Este documento define as regras para a **camada de Frontend** da entidade `<Entity>`:
 
 * Página de **Lista** (`<ListPage>`).
 * Página de **Edição** (`<EditPage>`).
@@ -11,7 +11,7 @@ Este documento define as regras para a **camada de Frontend** da entidade `<Enti
 Respeite:
 
 * Persona, variáveis e regras gerais do documento principal  
-  `docs/Workforce.Availability.CRUD.Main.md`.
+      `Workforce.Specs/Prompts/Crud/CrudWithFrontend.md`
 * Formato de saída descrito em **Saída Esperada (formato)**.
 
 ---
