@@ -1,22 +1,22 @@
-Ôªø# Prompt Principal ‚Äî Workforce CRUD Completo para `<Entity>` (Blazor + Radzen + .NET)
+# Prompt Principal ó Workforce CRUD Completo para `<Entity>` (Blazor + Radzen + .NET)
 
-Este √© o **documento principal** do prompt.  
-Ele define a persona, vari√°veis, regras gerais, formato da sa√≠da, crit√©rios de aceite e orienta√ß√µes globais.
+Este È o **documento principal** do prompt.  
+Ele define a persona, vari·veis, regras gerais, formato da saÌda, critÈrios de aceite e orientaÁıes globais.
 
-Os detalhes espec√≠ficos de cada camada (Repository, API, Servi√ßo HTTP e Frontend) foram extra√≠dos para **quatro documentos auxiliares** em `.md`, descritos na sec√ß√£o [Componentes do Prompt](#5-componentes-do-prompt-arquitetura-em-4-md).
+Os detalhes especÌficos de cada camada (Repository, API, ServiÁo HTTP e Frontend) foram extraÌdos para **quatro documentos auxiliares** em `.md`, descritos na secÁ„o [Componentes do Prompt](#5-componentes-do-prompt-arquitetura-em-4-md).
 
 ---
 
 ## 1) Persona
 
 Atue como **expert em C#, ASP.NET Core (.NET 10), EF Core, Blazor WebAssembly, UX/UI** e **Radzen** (Material 3).  
-Siga boas pr√°ticas de clean code e **n√£o use nomes de vari√°veis iniciados com underscore**.
+Siga boas pr·ticas de clean code e **n„o use nomes de vari·veis iniciados com underscore**.
 
 ---
 
-## 2) Vari√°veis (substituir o que est√° entre `<>`)
+## 2) Vari·veis (substituir o que est· entre `<>`)
 
-Estas vari√°veis s√£o utilizadas em todos os documentos auxiliares:
+Estas vari·veis s„o utilizadas em todos os documentos auxiliares:
 
 * `<Category>` = **Core**
 * `<Group>` = **LeaveManagement***
@@ -24,138 +24,138 @@ Estas vari√°veis s√£o utilizadas em todos os documentos auxiliares:
 * `<BaseEntity>` = **LeaveType**
 * `<Enum>` = **Enums**
 * `<Folder>` = **<Category>.<Group>.<BaseEntity>**
-* `<Domain>` (classe de dom√≠nio) = **Workforce.Domain.<Folder>.Entity.<Entity>.cs**
-* `<RepositoryFile>` = **Workforce.Business.<Folder>.Repository.<Entity>Repository.cs**
+* `<Domain>` (classe de domÌnio) = **Workforce.Domain.<Folder>.Entity.<Entity>.cs**
+* `<RepositoryFile>` = **Workforce.Realization.Infrastructure.Persistence.<Folder>.Repository.<Entity>Repository.cs**
 * `<ServiceFiles>` =  
   * **Workforce.Services.<Folder>.<Entity>Service.cs**  
   * **Workforce.Services.<Folder>.I<Entity>Service.cs**
 * `<ControllerFile>` = **Workforce.Server.Controllers.<Folder>.<Entity>Controller.cs**
 * `<ListPage>` = **Workforce.Client.Pages.<Folder>.Pages.<Entity>sPage.razor** (+ code-behind **.razor.cs**)
 * `<EditPage>` = **Workforce.Client.Pages.<Folder>.Pages.<Entity>Page.razor** (+ code-behind **.razor.cs**)
-* `<EnvIdExpr>` = **AppState.Session.Environment.Id**  ‚Üê *(use esta express√£o √∫nica para EnvironmentId)*
+* `<EnvIdExpr>` = **AppState.Session.Environment.Id**  ? *(use esta express„o ˙nica para EnvironmentId)*
 
 ---
 
 ## 3) Regras Gerais
 
-Estas regras aplicam-se a **todas** as camadas (Business, API, Servi√ßo HTTP e Frontend):
+Estas regras aplicam-se a **todas** as camadas (Repository, API, ServiÁo HTTP e Frontend):
 
-* Use **nomes ass√≠ncronos** com sufixo `Async`.
-* Todas as opera√ß√µes ass√≠ncronas devem aceitar `CancellationToken ct = default`.
+* Use **nomes assÌncronos** com sufixo `Async`.
+* Todas as operaÁıes assÌncronas devem aceitar `CancellationToken ct = default`.
 * Consultas de lista: use `AsNoTracking()`.
 * **Se `<Domain>` tiver propriedade `EnvironmentId`** (int):
-  * implemente `GetAllByEnvironmentIdAsync(environmentId, ct)` no reposit√≥rio e no servi√ßo HTTP;
-  * exponha rotas espec√≠ficas no controller;
+  * implemente `GetAllByEnvironmentIdAsync(environmentId, ct)` no repositÛrio e no serviÁo HTTP;
+  * exponha rotas especÌficas no controller;
   * a UI deve filtrar por `<EnvIdExpr>`.
-* Se `<Entity>` **herdar de uma tabela n√£o abstrata**, opera√ß√µes de escrita usam **transa√ß√£o EF Core**.
-* Siga **Material 3** no Radzen e **n√£o fixe tamanhos** (layout responsivo).
-* Internacionaliza√ß√£o: use `IStringLocalizer<SharedResources>` (ex.: `L["Qualification"]`) em texto vis√≠vel.
-* Em campos de data fa√ßa os devidos tratamentos para banco de dados **PostgreSQL** (tipos, fuso hor√°rio, `DateOnly` vs `DateTime`).
-* Coloque enums em `<Enum>` se necess√°rio.
-* Para cada `[ForeignKey]` da `<Entity>` (com exce√ß√£o de `EnvironmentId`), use dropdowns na UI.  
-  Implemente a busca adequada no service se necess√°rio.
-* **Se `<Entity>` n√£o estiver no banco de dados, crie uma migra√ß√£o, execute-a e atualize o banco.**
+* Se `<Entity>` **herdar de uma tabela n„o abstrata**, operaÁıes de escrita usam **transaÁ„o EF Core**.
+* Siga **Material 3** no Radzen e **n„o fixe tamanhos** (layout responsivo).
+* InternacionalizaÁ„o: use `IStringLocalizer<SharedResources>` (ex.: `L["Qualification"]`) em texto visÌvel.
+* Em campos de data faÁa os devidos tratamentos para banco de dados **PostgreSQL** (tipos, fuso hor·rio, `DateOnly` vs `DateTime`).
+* Coloque enums em `<Enum>` se necess·rio.
+* Para cada `[ForeignKey]` da `<Entity>` (com exceÁ„o de `EnvironmentId`), use dropdowns na UI.  
+  Implemente a busca adequada no service se necess·rio.
+* **Se `<Entity>` n„o estiver no banco de dados, crie uma migraÁ„o, execute-a e atualize o banco.**
 
 ---
 
-## 4) Sa√≠da Esperada (formato)
+## 4) SaÌda Esperada (formato)
 
-Sempre que o modelo for solicitado a gerar c√≥digo com base neste prompt:
+Sempre que o modelo for solicitado a gerar cÛdigo com base neste prompt:
 
-* Para cada arquivo de c√≥digo, comece com:
+* Para cada arquivo de cÛdigo, comece com:
 
   ```text
   /// FILE: <caminho/arquivo.exato>
-  <bloco de c√≥digo completo>
+  <bloco de cÛdigo completo>
   ```
 
-Gere c√≥digo completo e compil√°vel para cada arquivo listado nos documentos auxiliares.
+Gere cÛdigo completo e compil·vel para cada arquivo listado nos documentos auxiliares.
 
 ---
 
 ## 5) Componentes do Prompt (Arquitetura em 4 .md)
 
-O prompt foi decomposto em quatro documentos especializados, cada um focado numa camada espec√≠fica:
+O prompt foi decomposto em quatro documentos especializados, cada um focado numa camada especÌfica:
 
-### Business (Repository)
+### Repository (Infrastructure & Persistence)
 
-Respons√°vel pela defini√ß√£o do `<Entity>Repository`, acesso a dados via EF Core, m√©todos CRUD, filtros por `EnvironmentId` e migra√ß√µes de banco.
+Respons·vel pela definiÁ„o do `<Entity>Repository`, acesso a dados via EF Core, mÈtodos CRUD, filtros por `EnvironmentId` e migraÁıes de banco.
 
-**Documento**: `Workforce.Specs/Prompts/Crud/Components/Business.md`
+**Documento**: `Workforce.Specs/Prompts/Crud/Components/Repository.md`
 
 ### Api (Controller)
 
-Respons√°vel pelo `<Entity>Controller`, rotas Web API, c√≥digos de status, e registro do reposit√≥rio e contexto no `Workforce.Server/Program.cs`.
+Respons·vel pelo `<Entity>Controller`, rotas Web API, cÛdigos de status, e registro do repositÛrio e contexto no `Workforce.Server/Program.cs`.
 
 **Documento**: `Workforce.Specs/Prompts/Crud/Components/Api.md`
 
-### Servi√ßo Http (Chamadas HTTP √† API)
+### ServiÁo Http (Chamadas HTTP ‡ API)
 
-Respons√°vel pelo `<Entity>Service` e `I<Entity>Service`, chamadas via `HttpClient`, tratamento de respostas HTTP e registro no `Workforce.Client/Program.cs`.
+Respons·vel pelo `<Entity>Service` e `I<Entity>Service`, chamadas via `HttpClient`, tratamento de respostas HTTP e registro no `Workforce.Client/Program.cs`.
 
 **Documento**: `Workforce.Specs/Prompts/Crud/Components/HttpService.md`
 
 ### Frontend (Pages, Views, Components, Layout, UX)
 
-Respons√°vel pelas p√°ginas Blazor/Radzen (`<ListPage>`, `<EditPage>`), layout, componentes, valida√ß√µes, integra√ß√£o com `IStringLocalizer<SharedResources>`, navega√ß√£o, `MainLayout` e diretrizes de UX/UI (Material 3).
+Respons·vel pelas p·ginas Blazor/Radzen (`<ListPage>`, `<EditPage>`), layout, componentes, validaÁıes, integraÁ„o com `IStringLocalizer<SharedResources>`, navegaÁ„o, `MainLayout` e diretrizes de UX/UI (Material 3).
 
 **Documento**: `Workforce.Specs/Prompts/Crud/Components/Frontend.md`
 
 ### 5.1) Como usar os componentes
 
-Ao pedir gera√ß√£o de c√≥digo para uma camada espec√≠fica:
+Ao pedir geraÁ„o de cÛdigo para uma camada especÌfica:
 
-* **Para o reposit√≥rio**: use este documento principal + `Components/Business.md`.
+* **Para o repositÛrio**: use este documento principal + `Components/Repository.md`.
 * **Para o controller**: use este documento principal + `Components/Api.md`.
-* **Para o servi√ßo HTTP**: use este documento principal + `Components/HttpService.md`.
+* **Para o serviÁo HTTP**: use este documento principal + `Components/HttpService.md`.
 * **Para o frontend Blazor/Radzen**: use este documento principal + `Components/Frontend.md`.
 
-O modelo deve sempre respeitar a persona, vari√°veis, regras gerais e formato de sa√≠da definidos neste documento, al√©m das instru√ß√µes espec√≠ficas em cada `.md` auxiliar.
+O modelo deve sempre respeitar a persona, vari·veis, regras gerais e formato de saÌda definidos neste documento, alÈm das instruÁıes especÌficas em cada `.md` auxiliar.
 
 ---
 
-## 6) Crit√©rios de Aceite
+## 6) CritÈrios de Aceite
 
-A implementa√ß√£o ser√° considerada adequada se:
+A implementaÁ„o ser· considerada adequada se:
 
-* A solu√ß√£o compilar sem erros.
+* A soluÁ„o compilar sem erros.
 * O banco de dados estiver atualizado com a nova tabela.
-* A migra√ß√£o for criada e aplicada com sucesso.
-* N√£o houver erros de rota (uso correto de `Created` em vez de `CreatedAtAction` quando indicado).
-* N√£o houver erros RZ9996 (validadores Radzen fora de `RadzenFormField`).
-* Houver tratamento correto de exce√ß√µes HTTP em chamadas de API.
+* A migraÁ„o for criada e aplicada com sucesso.
+* N„o houver erros de rota (uso correto de `Created` em vez de `CreatedAtAction` quando indicado).
+* N„o houver erros RZ9996 (validadores Radzen fora de `RadzenFormField`).
+* Houver tratamento correto de exceÁıes HTTP em chamadas de API.
 * Endpoints da API responderem conforme descrito (200, 201, 204, 400, 404, etc.).
-* O reposit√≥rio siga o padr√£o ass√≠ncrono com `CancellationToken`.
-* O servi√ßo HTTP implemente a interface corretamente e fa√ßa chamadas HTTP adequadas.
+* O repositÛrio siga o padr„o assÌncrono com `CancellationToken`.
+* O serviÁo HTTP implemente a interface corretamente e faÁa chamadas HTTP adequadas.
 * O controller valide dados e retorne status codes apropriados.
-* A p√°gina de lista carregue registros (filtrando por ambiente quando aplic√°vel).
-* A p√°gina de edi√ß√£o crie/atualize/apague corretamente.
-* Navega√ß√£o por duplo clique na lista funcione para abrir a p√°gina de edi√ß√£o.
+* A p·gina de lista carregue registros (filtrando por ambiente quando aplic·vel).
+* A p·gina de ediÁ„o crie/atualize/apague corretamente.
+* NavegaÁ„o por duplo clique na lista funcione para abrir a p·gina de ediÁ„o.
 * UI siga Material 3, com layout responsivo e sem tamanhos fixos.
-* Internacionaliza√ß√£o funcional em todos os textos vis√≠veis (via `IStringLocalizer<SharedResources>`).
-* Nenhuma vari√°vel privada comece com underscore.
-* C√≥digo siga princ√≠pios de clean code e padr√µes de projeto adequados.
-* Transa√ß√µes EF Core aplicadas quando necess√°rio (opera√ß√µes de escrita em entidades derivadas de tabelas concretas).
+* InternacionalizaÁ„o funcional em todos os textos visÌveis (via `IStringLocalizer<SharedResources>`).
+* Nenhuma vari·vel privada comece com underscore.
+* CÛdigo siga princÌpios de clean code e padrıes de projeto adequados.
+* TransaÁıes EF Core aplicadas quando necess·rio (operaÁıes de escrita em entidades derivadas de tabelas concretas).
 * `AsNoTracking()` utilizado em todas as consultas de lista.
 * Tratamento adequado de campos `DateTime`/`DateOnly` para PostgreSQL.
 
 ---
 
-## 7) Observa√ß√µes Finais
+## 7) ObservaÁıes Finais
 
-* Caso `<Entity>` herde de uma tabela n√£o abstrata, os m√©todos do reposit√≥rio devem ser adaptados para fazer opera√ß√µes de escrita dentro de transa√ß√µes quando n√£o forem consultas.
-* Todas as opera√ß√µes de escrita (Insert, Update, Delete) devem usar transa√ß√µes quando indicado.
-* Opera√ß√µes de leitura (GetById, GetAll) n√£o precisam de transa√ß√µes.
-* Deve haver tratamento adequado de campos `DateTime` para PostgreSQL (UTC, convers√µes, tipos corretos).
+* Caso `<Entity>` herde de uma tabela n„o abstrata, os mÈtodos do repositÛrio devem ser adaptados para fazer operaÁıes de escrita dentro de transaÁıes quando n„o forem consultas.
+* Todas as operaÁıes de escrita (Insert, Update, Delete) devem usar transaÁıes quando indicado.
+* OperaÁıes de leitura (GetById, GetAll) n„o precisam de transaÁıes.
+* Deve haver tratamento adequado de campos `DateTime` para PostgreSQL (UTC, conversıes, tipos corretos).
 * O service no Client deve usar `HttpClient` para comunicar com a API.
-* P√°ginas Blazor devem ser componentes reutiliz√°veis e test√°veis.
-* SEMPRE criar e aplicar migra√ß√£o ap√≥s adicionar novo `DbSet` ao contexto.
+* P·ginas Blazor devem ser componentes reutiliz·veis e test·veis.
+* SEMPRE criar e aplicar migraÁ„o apÛs adicionar novo `DbSet` ao contexto.
 * Verificar se a tabela foi criada corretamente no banco PostgreSQL antes de testar os endpoints.
-* Ordem de execu√ß√£o recomendada (no desenvolvimento):  
-  **Dom√≠nio ‚Üí Repository ‚Üí Controller ‚Üí Service ‚Üí UI ‚Üí DbContext ‚Üí Migra√ß√£o ‚Üí Testes**.
+* Ordem de execuÁ„o recomendada (no desenvolvimento):  
+  **DomÌnio ? Repository ? Controller ? Service ? UI ? DbContext ? MigraÁ„o ? Testes**.
 * Use `Created()` em vez de `CreatedAtAction()` quando quiser evitar erros de rota do tipo "No route matches the supplied values".
-* Validadores Radzen devem ficar sempre fora de `RadzenFormField` (ver instru√ß√µes de Frontend).
-* Trate exce√ß√µes HTTP adequadamente no code-behind das p√°ginas (ver instru√ß√µes de Frontend e Servi√ßo HTTP).
+* Validadores Radzen devem ficar sempre fora de `RadzenFormField` (ver instruÁıes de Frontend).
+* Trate exceÁıes HTTP adequadamente no code-behind das p·ginas (ver instruÁıes de Frontend e ServiÁo HTTP).
 
 ---
 
@@ -164,9 +164,9 @@ A implementa√ß√£o ser√° considerada adequada se:
 Ao final, recomenda-se:
 
 * Testar manualmente todos os endpoints com ferramentas como curl, Postman ou equivalente.
-* Validar a navega√ß√£o da UI (lista ‚Üí edi√ß√£o ‚Üí volta √† lista).
-* Verificar mensagens de valida√ß√£o e notifica√ß√µes de sucesso/erro.
-* Confirmar que filtros por ambiente (`EnvironmentId`) est√£o a funcionar conforme `<EnvIdExpr>`.
-* Confirmar que datas s√£o persistidas e exibidas corretamente, considerando fuso hor√°rio e tipo de coluna no PostgreSQL.
+* Validar a navegaÁ„o da UI (lista ? ediÁ„o ? volta ‡ lista).
+* Verificar mensagens de validaÁ„o e notificaÁıes de sucesso/erro.
+* Confirmar que filtros por ambiente (`EnvironmentId`) est„o a funcionar conforme `<EnvIdExpr>`.
+* Confirmar que datas s„o persistidas e exibidas corretamente, considerando fuso hor·rio e tipo de coluna no PostgreSQL.
 
 Se desejar, podem ser adicionados, em documentos separados, exemplos de requests curl, casos de teste e checklists de UI mais detalhados.

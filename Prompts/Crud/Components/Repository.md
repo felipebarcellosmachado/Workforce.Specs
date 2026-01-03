@@ -1,6 +1,6 @@
-﻿# Workforce — Business (Repository & DB)
+﻿# Workforce — Repository (Infrastructure & Persistence)
 
-Este documento define as regras específicas para a **camada de Business** da entidade `<Entity>` (Availability):
+Este documento define as regras específicas para a **camada de Repository** da entidade `<Entity>`:
 
 * Repositório EF Core (`<Entity>Repository`).
 * Acesso a dados, métodos CRUD e filtros por `EnvironmentId`.
@@ -82,8 +82,8 @@ Após definir a nova entidade e o repositório, deve-se garantir que o **banco P
 
 ### 2.1) Atualizar o `WorkforceDbContext`
 
-**Arquivo** (exemplo):  
-`Workforce.Db/Workforce.Db/Db/WorkforceDbContext.cs`
+**Arquivo**:  
+`Workforce.Realization/Infrastructure/External/Db/WorkforceDbContext.cs`
 
 Se a entidade ainda não estiver incluída no contexto, adicione um `DbSet`:
 
@@ -97,16 +97,16 @@ Exemplo de padrão:
 public virtual DbSet<Domain.Core.HumanResourceManagement.RiskFactor.Entity.RiskFactor> RiskFactors { get; set; } = default!;
 ```
 
-Ajuste para `<Entity>`/`<Domain>` e `<Entities>` coerentes com Availability.
+Ajuste para `<Entity>`/`<Domain>` e `<Entities>` coerentes com a entidade desejada.
 
 ### 2.2) Criar a migração
 
 Num terminal/PowerShell:
 
-**Navegue até o projeto de banco (Workforce.Db):**
+**Navegue até o projeto Workforce.Realization:**
 
 ```powershell
-Set-Location "C:\Users\use\source\vs\Business\Workforce\Workforce.Db\Workforce.Db"
+Set-Location "C:\Users\use\source\vs\Business\Workforce\Workforce.Realization"
 ```
 
 **Crie a migração:**
@@ -136,7 +136,7 @@ Após o comando acima:
 **Verificar arquivo de migração:**
 
 * Localização típica:  
-  `Workforce.Db/Workforce.Db/Migrations/<timestamp>_Add<Entity>Table.cs`
+  `Workforce.Realization/Infrastructure/External/Db/Migrations/<timestamp>_Add<Entity>Table.cs`
 * Verifique colunas, constraints, FKs e índices.
 
 **Verificar a tabela no PostgreSQL:**
@@ -183,7 +183,7 @@ dotnet ef migrations script --context WorkforceDbContext --output migration.sql
 
 ---
 
-## 3) Notas de Business e Persistência
+## 3) Notas de Repository e Persistência
 
 * Caso `<Entity>` herde de uma tabela não abstrata:
   * Operações de escrita (Insert, Update, Delete) devem usar transações EF Core.
