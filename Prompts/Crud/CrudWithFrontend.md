@@ -18,11 +18,12 @@ Siga boas práticas de clean code e **não use nomes de variáveis iniciados com
 
 Estas variáveis são utilizadas em todos os documentos auxiliares:
 
+* `<Category>` = **Core**
+* `<Group>` = **LeaveManagement***
 * `<Entity>` = **LeaveType**
 * `<BaseEntity>` = **LeaveType**
 * `<Enum>` = **Enums**
-* `<Group>` = **LeaveManagement***
-* `<Folder>` = **Core.<Group>.<BaseEntity>**
+* `<Folder>` = **<Category>.<Group>.<BaseEntity>**
 * `<Domain>` (classe de domínio) = **Workforce.Domain.<Folder>.Entity.<Entity>.cs**
 * `<RepositoryFile>` = **Workforce.Business.<Folder>.Repository.<Entity>Repository.cs**
 * `<ServiceFiles>` =  
